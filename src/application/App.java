@@ -9,6 +9,9 @@ public class App {
         ArquivoUtils arquivoUtils = new ArquivoUtils();
         ArvoreFamilia arvore = arquivoUtils.leArquivo();
 
+
+        arvore.imprimirArvore(arvore.getRaiz(), 0);
+
         Scanner sc = new Scanner(System.in);
         String input = "";
 

@@ -30,35 +30,28 @@ public class ArvoreFamilia {
         Pessoa pai = buscar(raiz, nomePai);
         Pessoa filho = buscar(raiz, nomeFilho);
 
-        if (filho == null) {
-            filho = new Pessoa(nomeFilho);
-            if (pai != null) {
-                filho.setPai(pai);
-                pai.addFilho(filho);
-
-                if (pai.getEsq() == null) {
-                    pai.setEsq(filho);
-                } else if (raiz == null) {
-                    raiz = filho;
-                }
-            }
-        }
-
         if (pai == null) {
             pai = new Pessoa(nomePai);
             if (raiz == null) {
                 raiz = pai;
             }
-            filho.setPai(pai);
-            pai.addFilho(filho);
+        }
 
-            if (pai.getEsq() == null) {
-                pai.setEsq(filho);
-            } else if (pai.getDir() == null) {
-                pai.setDir(filho);
-            }
+        if (filho == null) {
+            filho = new Pessoa(nomeFilho);
+        }
+
+
+        filho.setPai(pai);
+        pai.addFilho(filho);
+
+        if (pai.getEsq() == null) {
+            pai.setEsq(filho);
+        } else if (pai.getDir() == null) {
+            pai.setDir(filho);
         }
     }
+
 
     public String relacao(String nome1, String nome2) {
         Pessoa p1 = buscar(raiz, nome1);
@@ -72,4 +65,23 @@ public class ArvoreFamilia {
 
         return "sem relacao";
     }
+
+    public void imprimirArvore(Pessoa pessoa, int nivel) {
+    if (pessoa == null) return;
+
+    for (int i = 0; i < nivel; i++) {
+        System.out.print("  ");
+    }
+    System.out.println(pessoa.getNome());
+
+    imprimirArvore(pessoa.getEsq(), nivel + 1);
+    imprimirArvore(pessoa.getDir(), nivel + 1);
+
+    for (Pessoa filho : pessoa.getFilhos()) {
+        imprimirArvore(filho, nivel + 1);
+    }
+}
+
+
+
 }
