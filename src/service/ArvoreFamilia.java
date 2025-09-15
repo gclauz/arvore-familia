@@ -43,12 +43,15 @@ public class ArvoreFamilia {
 
 
         filho.setPai(pai);
-        pai.addFilho(filho);
 
         if (pai.getEsq() == null) {
             pai.setEsq(filho);
         } else if (pai.getDir() == null) {
             pai.setDir(filho);
+        }
+
+        if (raiz == filho){
+            raiz = pai;
         }
     }
 
@@ -74,12 +77,9 @@ public class ArvoreFamilia {
     }
     System.out.println(pessoa.getNome());
 
+
     imprimirArvore(pessoa.getEsq(), nivel + 1);
     imprimirArvore(pessoa.getDir(), nivel + 1);
-
-    for (Pessoa filho : pessoa.getFilhos()) {
-        imprimirArvore(filho, nivel + 1);
-    }
 }
 
 
