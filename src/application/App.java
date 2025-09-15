@@ -10,15 +10,15 @@ public class App {
         ArvoreFamilia arvore = arquivoUtils.leArquivo();
 
 
-        arvore.imprimirArvore(arvore.getRaiz(), 0);
+        arvore.imprimirArvore(arvore.getRaiz(), "\n");
 
-        Scanner sc = new Scanner(System.in);
-        String input = "";
+        // Scanner sc = new Scanner(System.in);
+        // String input = "";
 
-        while (!input.equals("exit")) {
-            input = sc.next();
-        }
+        // while (!input.equals("exit")) {
+        //     input = sc.next();
+        // }
 
-        sc.close();
+        // sc.close();
     }
 }

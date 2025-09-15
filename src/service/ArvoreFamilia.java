@@ -13,7 +13,7 @@ public class ArvoreFamilia {
         if (pessoa == null) {
             return null;
         }
-        // achou
+        
         if (pessoa.getNome().equals(nome)) {
             return pessoa;
         }
@@ -69,18 +69,15 @@ public class ArvoreFamilia {
         return "sem relacao";
     }
 
-    public void imprimirArvore(Pessoa pessoa, int nivel) {
-    if (pessoa == null) return;
+    public void imprimirArvore(Pessoa pessoa, String espaco) {
+        if (pessoa == null) return;
+        
+        imprimirArvore(pessoa.getEsq(), espaco + "            ");
 
-    for (int i = 0; i < nivel; i++) {
-        System.out.print("  ");
+        System.out.println(espaco + pessoa.getNome());
+
+        imprimirArvore(pessoa.getDir(), espaco + "            ");
     }
-    System.out.println(pessoa.getNome());
-
-
-    imprimirArvore(pessoa.getEsq(), nivel + 1);
-    imprimirArvore(pessoa.getDir(), nivel + 1);
-}
 
 
 
