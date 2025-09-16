@@ -49,6 +49,6 @@ public class Pessoa {
     }
 
     public void addFilho(Pessoa filho) {
-        filhos.add(filho);
+        this.filhos.add(filho);
     }
 }

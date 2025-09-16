@@ -1,16 +1,22 @@
 package application;
 
 import java.util.Scanner;
+
+import entities.Pessoa;
 import service.ArvoreFamilia;
 import util.ArquivoUtils;
 
 public class App {
     public static void main(String[] args) {
-        ArquivoUtils arquivoUtils = new ArquivoUtils();
-        ArvoreFamilia arvore = arquivoUtils.leArquivo();
+        ArquivoUtils leitorDeArquivo = new ArquivoUtils();
+
+        ArvoreFamilia arvore = leitorDeArquivo.leArquivo();
+
+        Pessoa raiz = arvore.getRaiz();
 
 
-        arvore.imprimirArvore(arvore.getRaiz(), "\n");
+        arvore.imprimirArvore(raiz, "");
+
 
         // Scanner sc = new Scanner(System.in);
         // String input = "";

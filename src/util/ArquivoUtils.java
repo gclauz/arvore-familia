@@ -27,6 +27,8 @@ public class ArquivoUtils {
                 String nomePai = partes[1];
 
                 arvore.inserir(nomeFilho, nomePai);
+                arvore.definirRaiz();
+
             }
         } catch(IOException e){
             System.out.println("Erro: " + e.getMessage());
