@@ -43,12 +43,4 @@ public class Pessoa {
     public void setDir(Pessoa dir) {
         this.dir = dir;
     }
-
-    public List<Pessoa> getFilhos() {
-        return filhos;
-    }
-
-    public void addFilho(Pessoa filho) {
-        this.filhos.add(filho);
-    }
 }

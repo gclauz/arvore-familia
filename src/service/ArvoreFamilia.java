@@ -7,7 +7,7 @@ import java.util.Map;
 public class ArvoreFamilia {
 
     private Pessoa raiz;
-    private Map<String, Pessoa> pessoas = new HashMap<>();
+    private Map<String, Pessoa> pessoas = new HashMap<>(); // Dicionário para construir a árvore
 
     public Pessoa getRaiz() {
         return raiz;
@@ -39,9 +39,9 @@ public class ArvoreFamilia {
     }
 
     public void definirRaiz() {
-        for (Pessoa pessoa : pessoas.values()) {
-            if (pessoa.getPai() == null) {
-                this.raiz = pessoa;
+        for (Pessoa pessoa : pessoas.values()) { // percorre por todas as pessoas no dicionário
+            if (pessoa.getPai() == null) { // para cada pessoa ele verifica se o pai da pessoa é null, ou seja, ela não tem pai
+                this.raiz = pessoa; // define a pessoa como raiz, já que não encontrou o pai dela
                 return;
             }
         }
@@ -64,7 +64,7 @@ public class ArvoreFamilia {
         }
 
         // Irmãos
-        if (p1.getPai() != null && p1.getPai() == p2.getPai()) {
+        if (p1.getPai() != null && p1.getPai() == p2.getPai()) { // p1 e p2 tem o mesmo pai
             return "irmao";
         }
 
@@ -159,9 +159,9 @@ public class ArvoreFamilia {
 
                     return "primo-" + grauParentesco + " em grau " + diferencaGrau;
                 }
-                atualP2 = atualP2.getPai();
+                atualP2 = atualP2.getPai(); // vai subindo p2
             }
-            atualP1 = atualP1.getPai();
+            atualP1 = atualP1.getPai(); // vai subindo p1 
         }
 
         return "sem relacao";
