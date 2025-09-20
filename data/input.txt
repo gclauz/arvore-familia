@@ -8,6 +8,3 @@ les.valiant mike.paterson
 bob.constable carlos.souza
 david.park heitor.maciel
 heitor.maciel oswaldo.veblen
-arthur.slikta les.valiant
-guilherme.clauz arthur.slikta
-gabriel.kondo guilherme.clauz

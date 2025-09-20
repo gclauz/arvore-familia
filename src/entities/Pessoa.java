@@ -1,13 +1,9 @@
 package entities;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Pessoa {
     private final String nome;
     private Pessoa pai;
     private Pessoa esq, dir;
-    private List<Pessoa> filhos = new ArrayList<>();
 
     public Pessoa(String nome) {
         this.nome = nome;

@@ -1,6 +1,5 @@
 package application;
 
-import entities.Pessoa;
 import java.util.Scanner;
 import service.ArvoreFamilia;
 import util.ArquivoUtils;
@@ -10,8 +9,7 @@ public class App {
         ArquivoUtils leitorDeArquivo = new ArquivoUtils();
         ArvoreFamilia arvore = leitorDeArquivo.leArquivo();
 
-        Pessoa raiz = arvore.getRaiz();
-        arvore.imprimirArvore(raiz, "");
+        arvore.imprimirArvore(arvore.getRaiz(), "");
 
         Scanner sc = new Scanner(System.in);
 
@@ -38,7 +36,6 @@ public class App {
             String resultado = arvore.relacao(nome1, nome2);
             System.out.println(resultado);
         }
-
         sc.close();
     }
 }

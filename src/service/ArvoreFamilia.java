@@ -13,8 +13,20 @@ public class ArvoreFamilia {
         return raiz;
     }
 
-    public Pessoa buscar(String nome) {
-        return pessoas.get(nome);
+    private Pessoa buscar(Pessoa atual, String nome) {
+        if (atual == null) {
+            return null;
+        }
+        if (atual.getNome().equals(nome)) {
+            return atual;
+        }
+
+        Pessoa encontrado = buscar(atual.getEsq(), nome);
+        if (encontrado != null) {
+            return encontrado;
+        }
+
+        return buscar(atual.getDir(), nome);
     }
 
     public void inserir(String nomeFilho, String nomePai) {
@@ -39,8 +51,8 @@ public class ArvoreFamilia {
     }
 
     public void definirRaiz() {
-        for (Pessoa pessoa : pessoas.values()) { // percorre por todas as pessoas no dicionário
-            if (pessoa.getPai() == null) { // para cada pessoa ele verifica se o pai da pessoa é null, ou seja, ela não tem pai
+        for (Pessoa pessoa : pessoas.values()) { // percorre por todas as pessoas no map
+            if (pessoa.getPai() == null) { // para cada pessoa ele verifica se o pai da pessoa é null
                 this.raiz = pessoa; // define a pessoa como raiz, já que não encontrou o pai dela
                 return;
             }
@@ -48,49 +60,32 @@ public class ArvoreFamilia {
     }
 
     public String relacao(String nome1, String nome2) {
-        Pessoa p1 = buscar(nome1);
-        Pessoa p2 = buscar(nome2);
+        Pessoa p1 = buscar(this.raiz ,nome1);
+        Pessoa p2 = buscar(this.raiz ,nome2);
 
-        if (p1 == null || p2 == null) {
-            return "sem relacao";
-        }
+        if (p1 == null || p2 == null) return "sem relacao";
 
         // Pai/Filho imediato
-        if (p1.getPai() == p2) {
-            return "filho";
-        }
-        if (p2.getPai() == p1) {
-            return "pai";
-        }
+        if (p1.getPai() == p2) return "filho";
+        if (p2.getPai() == p1) return "pai";
 
         // Irmãos
-        if (p1.getPai() != null && p1.getPai() == p2.getPai()) { // p1 e p2 tem o mesmo pai
-            return "irmao";
-        }
+        if (p1.getPai() != null && p1.getPai() == p2.getPai()) return "irmao";
 
         // Verificar se p1 é descendente de p2
         Pessoa atual = p1;
-        int dist = 0;
+        int distancia = 0;
         while (atual != null) {
             if (atual == p2) {
-                if (dist == 1) {
-                    return "filho";
-                }
-                if (dist == 2) {
-                    return "neto";
-                }
-                if (dist == 3) {
-                    return "bisneto";
-                }
-                if (dist == 4) {
-                    return "tataraneto";
-                }
-                if (dist > 4){
+                if (distancia == 2) return "neto";
+                if (distancia == 3) return "bisneto";
+                if (distancia == 4) return "tataraneto";
+                if (distancia > 4){
                     StringBuilder sb = new StringBuilder();
                     String s1 = "tataraneto";
                     String s2 = "ta";
 
-                    for (int i = 0; i < dist - 4; i++) {
+                    for (int i = 0; i < distancia - 4; i++) {
                         sb.append(s2);
                     }
                     sb.append(s1);
@@ -100,32 +95,23 @@ public class ArvoreFamilia {
                 }
             }
             atual = atual.getPai();
-            dist++;
+            distancia++;
         }
 
         // Verificar se p2 é descendente de p1
         atual = p2;
-        dist = 0;
+        distancia = 0;
         while (atual != null) {
             if (atual == p1) {
-                if (dist == 1) {
-                    return "pai";
-                }
-                if (dist == 2) {
-                    return "avô";
-                }
-                if (dist == 3) {
-                    return "bisavô";
-                }
-                if (dist == 4) {
-                    return "tataravô";
-                }
-                if (dist > 4){
+                if (distancia == 2) return "avo";
+                if (distancia == 3) return "bisavo";
+                if (distancia == 4) return "tataravo";
+                if (distancia > 4){
                     StringBuilder sb = new StringBuilder();
-                    String s1 = "tataravô";
+                    String s1 = "tataravo";
                     String s2 = "ta";
 
-                    for (int i = 0; i < dist - 4; i++) {
+                    for (int i = 0; i < distancia - 4; i++) {
                         sb.append(s2);
                     }
                     sb.append(s1);
@@ -135,7 +121,7 @@ public class ArvoreFamilia {
                 }
             }
             atual = atual.getPai();
-            dist++;
+            distancia++;
         }
 
         // Procurar ancestral comum mais próximo

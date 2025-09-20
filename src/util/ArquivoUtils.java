@@ -23,13 +23,13 @@ public class ArquivoUtils {
 
             while ((linha = br.readLine()) != null) {
                 String[] partes = linha.split(" ");
+                if (partes.length < 2) continue;
                 String nomeFilho = partes[0];
                 String nomePai = partes[1];
 
                 arvore.inserir(nomeFilho, nomePai);
-                arvore.definirRaiz();
-
             }
+            arvore.definirRaiz();
         } catch(IOException e){
             System.out.println("Erro: " + e.getMessage());
         }
