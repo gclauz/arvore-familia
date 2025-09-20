@@ -9,11 +9,12 @@ public class App {
         ArquivoUtils leitorDeArquivo = new ArquivoUtils();
         ArvoreFamilia arvore = leitorDeArquivo.leArquivo();
 
-        arvore.imprimirArvore(arvore.getRaiz(), "");
+//        arvore.imprimirArvore(arvore.getRaiz(), "");
 
         Scanner sc = new Scanner(System.in);
 
         while (true) {
+            System.out.println("Digite <nome1> <nome2> para consulta ou 'exit' para sair:");
             String linha = sc.nextLine().trim();
 
             if (linha.equalsIgnoreCase("exit")) {
