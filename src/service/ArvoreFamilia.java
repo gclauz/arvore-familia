@@ -116,8 +116,8 @@ public class ArvoreFamilia {
                     }
                     sb.append(s1);
 
-                    String descendente = sb.toString();
-                    return descendente;
+                    String ascendente = sb.toString();
+                    return ascendente;
                 }
             }
             atual = atual.getPai();
@@ -126,6 +126,7 @@ public class ArvoreFamilia {
 
         return primos(p1, p2);
     }
+
 
     private String primos(Pessoa p1, Pessoa p2) {
         Pessoa atualP1 = p1;
@@ -157,6 +158,8 @@ public class ArvoreFamilia {
                     Primo em grau j
                     j = |m - n|
                     diferença de gerações entre os dois primos
+
+                    Sendo m e n os níveis de p1 e p2 respectivamente
                      */
                     int k = Math.min(m, n) - 1;
                     int j = Math.abs(m - n);

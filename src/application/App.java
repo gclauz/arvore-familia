@@ -9,7 +9,7 @@ public class App {
         ArquivoUtils leitorDeArquivo = new ArquivoUtils();
         ArvoreFamilia arvore = leitorDeArquivo.leArquivo();
 
-//        arvore.imprimirArvore(arvore.getRaiz(), "");
+       arvore.imprimirArvore(arvore.getRaiz(), "");
 
         Scanner sc = new Scanner(System.in);
 
