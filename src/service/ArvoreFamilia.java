@@ -85,7 +85,19 @@ public class ArvoreFamilia {
                 if (dist == 4) {
                     return "tataraneto";
                 }
-                return "descendente-" + dist;
+                if (dist > 4){
+                    StringBuilder sb = new StringBuilder();
+                    String s1 = "tataraneto";
+                    String s2 = "ta";
+
+                    for (int i = 0; i < dist - 4; i++) {
+                        sb.append(s2);
+                    }
+                    sb.append(s1);
+
+                    String descendente = sb.toString();
+                    return descendente;
+                }
             }
             atual = atual.getPai();
             dist++;
@@ -100,15 +112,27 @@ public class ArvoreFamilia {
                     return "pai";
                 }
                 if (dist == 2) {
-                    return "avo";
+                    return "avô";
                 }
                 if (dist == 3) {
-                    return "bisavo";
+                    return "bisavô";
                 }
                 if (dist == 4) {
-                    return "tataravo";
+                    return "tataravô";
                 }
-                return "ascendente-" + dist;
+                if (dist > 4){
+                    StringBuilder sb = new StringBuilder();
+                    String s1 = "tataravô";
+                    String s2 = "ta";
+
+                    for (int i = 0; i < dist - 4; i++) {
+                        sb.append(s2);
+                    }
+                    sb.append(s1);
+
+                    String descendente = sb.toString();
+                    return descendente;
+                }
             }
             atual = atual.getPai();
             dist++;
