@@ -1,3 +1,6 @@
+// Arthur Roldan Slikta - 10353847
+// Guilherme Clauz Morlina da Silva - 10436477
+// Gabriel Hideaquy Kondo - 10436238
 package service;
 
 import entities.Pessoa;
